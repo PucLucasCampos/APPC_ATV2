@@ -84,31 +84,37 @@ def Relatorio():
             print(f"{id}\t\t{index[0]}\t\t{index[1]}\t\t{index[4]:.2f}\t\t\t{index[3]:.2f}")
 
 def Maior_salario_liquido():
-    maior = auxM = 0
-    for id,sl in funcionarios.items():
-        auxM = sl[3]
-        if auxM > maior:
-            maior = sl[3]
+    maior = 0
+    key = 0
+
+    for id, func in funcionarios.items():
+        if func[3] > maior:
+            maior = func[3]
+            key = id
+    func_maior = funcionarios[key]   
     print(f"""
-        ID: {id}
-        NOME: {sl[0]}
-        CODIGO: {sl[1]}
-        SALÁRIO BRUTO: R$ {sl[4]}
-        SALÁRIO LIQUIDO: R$ {sl[3]}
+        ID: {key}
+        NOME: {func_maior[0]}
+        CODIGO: {func_maior[1]}
+        SALÁRIO BRUTO: R$ {func_maior[4]:.2f}
+        SALÁRIO LIQUIDO: R$ {func_maior[3]:.2f}
         """)
     
 def Mais_faltas():
-    maior = auxM = 0
-    for id, fal in funcionarios.items():
-        auxM = fal[2]
-        if auxM > maior:
-            maior = fal[2]
+    maior = 0
+    key = 0
+
+    for id, func in funcionarios.items():
+        if func[2] > maior:
+            maior = func[2]
+            key = id
+    func_maior = funcionarios[key] 
     print(f"""
-        ID: {id}
-        NOME: {fal[0]}
-        CODIGO: {fal[1]}
-        NÚMERO DE FALTAS: {fal[2]}
-        DESCONTO: {fal[6]}
+        ID: {key}
+        NOME: {func_maior[0]}
+        CODIGO: {func_maior[1]}
+        NÚMERO DE FALTAS: {func_maior[2]:.2f}
+        DESCONTO: {func_maior[6]:.2f}
         """)
 
 menu = 1
